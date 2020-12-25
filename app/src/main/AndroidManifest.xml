@@ -3,6 +3,7 @@
     package="com.example.houyuapp">
 
     <application
+        android:name=".injection.HouyuApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
