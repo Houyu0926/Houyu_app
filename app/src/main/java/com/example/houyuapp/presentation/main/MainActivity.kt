@@ -1,8 +1,9 @@
-package com.example.houyuapp
+package com.example.houyuapp.presentation.main
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.lifecycle.Observer
+import com.example.houyuapp.R
 import kotlinx.android.synthetic.main.activity_main.*
 import org.koin.android.ext.android.inject
 
@@ -14,7 +15,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         main_button.setOnClickListener{
-            mainViewModel.onClickedIncrement()
+            mainViewModel.onClickedIncrement("")
         }
         mainViewModel.count.observe(this, Observer {
                 value -> main_text.text = value.toString()

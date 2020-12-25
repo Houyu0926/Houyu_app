@@ -12,7 +12,7 @@ class HouyuApplication : Application(){
             // Android context
             androidContext(this@HouyuApplication)
             // modules
-            modules(presentationModule)
+            modules(presentationModule, domainModule, dataModule)
         }
     }
 }
