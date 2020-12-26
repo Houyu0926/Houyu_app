@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">Houyu app</string>
+    <string name="connectez_vous">Connectez-vous</string>
+    <string name="login">Login</string>
+    <string name="entrez_votre_login">Entrez votre login</string>
+    <string name="password">Password</string>
+    <string name="entrez_votre_password">Entrez votre password</string>
+    <string name="se_connecter">Se connecter</string>
+    <string name="s_inscrire">S\'inscrire</string>
 </resources>
