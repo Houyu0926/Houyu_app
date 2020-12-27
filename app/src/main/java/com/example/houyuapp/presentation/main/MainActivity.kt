@@ -51,7 +51,6 @@ class MainActivity : AppCompatActivity() {
     private fun registerButton() {
 
         create_account_button.setOnClickListener(View.OnClickListener {
-
             val intent = Intent(this@MainActivity, RegisterActivity::class.java)
             this@MainActivity.startActivity(intent)
         })
