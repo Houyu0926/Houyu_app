@@ -1,11 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:padding="10dp"
-    tools:context=".presentation.main.MainActivity">
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="match_parent">
 
     <LinearLayout
         android:orientation="vertical"
@@ -16,7 +12,7 @@
             android:id="@+id/edit_text"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/connectez_vous"
+            android:text="@string/bienvenue_sur_la_page_d_inscription"
             android:layout_marginTop="30dp"
             android:textAlignment="center"
             android:textSize="30sp" />
@@ -24,13 +20,13 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/login"
+            android:text="@string/login_register"
             android:textAlignment="center"
             android:layout_marginTop="90dp"
             android:textSize="20sp" />
 
         <EditText
-            android:id="@+id/username"
+            android:id="@+id/new_username"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/entrez_votre_login"
@@ -40,16 +36,16 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/password"
+            android:text="@string/new_password"
             android:textAlignment="center"
             android:layout_marginTop="30dp"
             android:textSize="20sp" />
 
         <EditText
-            android:id="@+id/password"
+            android:id="@+id/new_password"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/entrez_votre_password"
+            android:hint="@string/entrez_votre_password_page"
             android:inputType="textPassword"
             android:autofillHints="@string/entrez_votre_password" />
 
@@ -63,20 +59,11 @@
                 android:layout_height="60dp"
                 android:layout_width="wrap_content"
                 android:layout_marginTop="30dp"
-                android:text="@string/se_connecter"
+                android:text="@string/s_inscrire_page"
                 android:layout_gravity="center"
                 android:textAlignment="center"
                 android:textSize="18sp" />
 
-            <Button
-                android:id="@+id/create_account_button"
-                android:layout_height="60dp"
-                android:layout_width="wrap_content"
-                android:layout_marginTop="20dp"
-                android:text="@string/s_inscrire"
-                android:layout_gravity="center"
-                android:textAlignment="center"
-                android:textSize="18sp" />
 
         </LinearLayout>
 

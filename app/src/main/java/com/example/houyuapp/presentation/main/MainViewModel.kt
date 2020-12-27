@@ -7,26 +7,29 @@ import com.example.houyuapp.domain.entity.User
 import com.example.houyuapp.domain.usecase.CreateUserUseCase
 import com.example.houyuapp.domain.usecase.GetUserUseCase
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 class MainViewModel (
     private val createUserUseCase: CreateUserUseCase,
     private val getUserUseCase: GetUserUseCase
 ) : ViewModel()
 {
-   val count: MutableLiveData<Int> = MutableLiveData()
+   val loginLiveData: MutableLiveData<LoginStatus> = MutableLiveData()
 
-    init{
-        count.value = 0
-    }
-
-    fun onClickedIncrement(emailUser : String){
+    fun onClickedLogin(emailUser: String, password: String){
         viewModelScope.launch(Dispatchers.IO) {
-            createUserUseCase.invoke(User("ok"))
-            val user = getUserUseCase.invoke("ok")
-            val debug ="debug"
+            val user = getUserUseCase.invoke(emailUser)
+
+            val loginStatus =  if (user != null){
+                LoginSuccess(user.email)
+            }else{
+                LoginError
+            }
+            withContext(Dispatchers.Main){
+                loginLiveData.value = loginStatus
+            }
+
         }
-        //count.value = (count.value ?: 0) + 1
     }
 }
