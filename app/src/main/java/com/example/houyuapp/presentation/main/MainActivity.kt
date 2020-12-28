@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.KeyEvent
 import android.view.View
+import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
@@ -30,12 +31,12 @@ class MainActivity : AppCompatActivity() {
         mainViewModel.loginLiveData.observe(this, Observer {
             when (it) {
                 is LoginSuccess -> {
-                    // TODO
+                    Toast.makeText(this, "Login Success!", Toast.LENGTH_SHORT).show()
                 }
                 LoginError -> {
                     AlertDialog.Builder(this)
                         .setTitle("Erreur !")
-                        .setMessage("Adresse email inconnu\nVeuillez créer un compte ~")
+                        .setMessage("Adresse email ou password incorrect.\n\nAvez-vous déjà un compte ?")
                         .setPositiveButton("OK") { dialog, which ->
                             dialog.dismiss()
                         }
@@ -44,7 +45,9 @@ class MainActivity : AppCompatActivity() {
             }
         })
         login_button.setOnClickListener{
-            mainViewModel.onClickedLogin(username.text.toString().trim(), password.text.toString())
+            mainViewModel.onClickedLogin(username.text.toString().trim(), password.text.toString().trim())
+            findViewById<EditText>(R.id.username).text = null
+            findViewById<EditText>(R.id.password).text = null
         }
     }
 

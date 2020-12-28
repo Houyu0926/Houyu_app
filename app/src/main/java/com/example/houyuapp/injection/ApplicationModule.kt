@@ -5,21 +5,22 @@ import androidx.room.Room
 import com.example.houyuapp.data.local.AppDatabase
 import com.example.houyuapp.data.local.DatabaseDao
 import com.example.houyuapp.data.repository.UserRepository
-import com.example.houyuapp.domain.usecase.CreateUserUseCase
-import com.example.houyuapp.domain.usecase.GetUserUseCase
+import com.example.houyuapp.domain.usecase.ConfirmRegistrationUseCase
+import com.example.houyuapp.domain.usecase.CreateAccountUseCase
+import com.example.houyuapp.domain.usecase.GetAccountUseCase
 import com.example.houyuapp.presentation.main.MainViewModel
 import org.koin.android.ext.koin.androidContext
 import org.koin.dsl.module
-import java.security.AccessControlContext
 
 // just declare it
 val presentationModule = module {
-    factory { MainViewModel(get(), get()) }
+    factory { MainViewModel(get(), get(), get()) }
 }
 
 val domainModule = module{
-    factory { CreateUserUseCase(get()) }
-    factory { GetUserUseCase(get()) }
+    factory { CreateAccountUseCase(get()) }
+    factory { GetAccountUseCase(get()) }
+    factory { ConfirmRegistrationUseCase(get()) }
 }
 
 val dataModule = module{

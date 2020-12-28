@@ -7,9 +7,9 @@
     <string name="entrez_votre_password">Entrez votre password</string>
     <string name="se_connecter">Se connecter</string>
     <string name="s_inscrire">S\'inscrire</string>
-    <string name="s_inscrire_page">Valider</string>
     <string name="bienvenue_sur_la_page_d_inscription">Bienvenue sur la page d\'inscription</string>
     <string name="login_register">Nouveau login</string>
     <string name="entrez_votre_password_page">Entrez votre password</string>
     <string name="new_password">Nouveau password</string>
+    <string name="valider">Valider</string>
 </resources>

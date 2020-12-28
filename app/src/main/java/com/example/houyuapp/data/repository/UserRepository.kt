@@ -1,7 +1,7 @@
 package com.example.houyuapp.data.repository
 
-import android.provider.ContactsContract
 import com.example.houyuapp.data.local.DatabaseDao
+import com.example.houyuapp.data.local.models.UserLocal
 import com.example.houyuapp.data.local.models.toData
 import com.example.houyuapp.data.local.models.toEntity
 import com.example.houyuapp.domain.entity.User
@@ -9,12 +9,18 @@ import com.example.houyuapp.domain.entity.User
 class UserRepository(
     private val databaseDao: DatabaseDao
 ) {
-    suspend fun CreateUser(user: User){
+    fun createAccount(user: User){
         databaseDao.insert(user.toData())
     }
 
-    fun getUser(email: String): User?{
-        val userLocal = databaseDao.findByName(email)
-        return userLocal?.toEntity()
+    fun getAccount(email: String, password: String): User?{
+        val emailLocal = databaseDao.findByName(email, password)
+        return emailLocal?.toEntity()
     }
+
+    fun confirmRegistration(newEmail: String): User?{
+        val newEmailLocal = databaseDao.findByEmail(newEmail)
+        return newEmailLocal?.toEntity()
+    }
+
 }
