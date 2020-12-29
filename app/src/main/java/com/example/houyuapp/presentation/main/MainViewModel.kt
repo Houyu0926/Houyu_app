@@ -12,13 +12,12 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
 class MainViewModel (
-    private val createAccountUseCase: CreateAccountUseCase,
-    private val getAccountUseCase: GetAccountUseCase,
-    private val confirmRegistrationUseCase: ConfirmRegistrationUseCase
+    private val getAccountUseCase: GetAccountUseCase
+
 ) : ViewModel()
 {
     val loginLiveData: MutableLiveData<LoginStatus> = MutableLiveData()
-    val registerLiveData: MutableLiveData<RegisterStatus> = MutableLiveData()
+
 
     fun onClickedLogin(emailUser: String, password: String){
         viewModelScope.launch(Dispatchers.IO) {
@@ -36,28 +35,5 @@ class MainViewModel (
         }
     }
 
-    fun verifyRegister(newUser: String){
 
-        viewModelScope.launch(Dispatchers.IO) {
-            val newEmail = confirmRegistrationUseCase.invoke(newUser)
-            val registerStatus = if (newEmail != null){
-                RegisterError(newEmail.email)
-            }else{
-                RegisterSuccess
-            }
-            withContext(Dispatchers.Main){
-                registerLiveData.value = registerStatus
-            }
-
-        }
-
-    }
-
-    fun onClickedRegister (newUser:User){
-        viewModelScope.launch(Dispatchers.IO) {
-            createAccountUseCase.invoke(newUser)
-
-        }
-
-    }
 }

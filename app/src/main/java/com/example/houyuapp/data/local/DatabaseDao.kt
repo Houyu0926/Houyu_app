@@ -22,5 +22,5 @@ interface DatabaseDao {
     fun insert(user: UserLocal)
 
     @Delete
-    fun delete(user: UserLocal, password: UserLocal)
+    fun delete(user: UserLocal)
 }

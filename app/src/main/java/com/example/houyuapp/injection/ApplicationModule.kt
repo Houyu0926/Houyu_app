@@ -9,12 +9,14 @@ import com.example.houyuapp.domain.usecase.ConfirmRegistrationUseCase
 import com.example.houyuapp.domain.usecase.CreateAccountUseCase
 import com.example.houyuapp.domain.usecase.GetAccountUseCase
 import com.example.houyuapp.presentation.main.MainViewModel
+import com.example.houyuapp.presentation.register.RegisterViewModel
 import org.koin.android.ext.koin.androidContext
 import org.koin.dsl.module
 
 // just declare it
 val presentationModule = module {
-    factory { MainViewModel(get(), get(), get()) }
+    factory { MainViewModel(get()) }
+    factory { RegisterViewModel(get(), get()) }
 }
 
 val domainModule = module{
@@ -35,5 +37,6 @@ fun createDatabase(context: Context): DatabaseDao {
         AppDatabase::class.java, "database-name"
     ).build()
     return appDatabase.databaseDao()
-
 }
+
+

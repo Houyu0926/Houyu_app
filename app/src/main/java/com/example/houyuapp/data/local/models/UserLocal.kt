@@ -2,6 +2,7 @@ package com.example.houyuapp.data.local.models
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity
+import androidx.room.Index
 import androidx.room.PrimaryKey
 import com.example.houyuapp.domain.entity.User
 

@@ -1,0 +1,19 @@
+package com.example.houyuapp.domain.entity
+
+class Dog {
+    private val breed: String? = null
+    private val origin: String? = null
+    private val imgurl: String? = null
+
+    fun getBreed(): String? {
+        return breed
+    }
+
+    fun getOrigin(): String? {
+        return origin
+    }
+
+    fun getImageurl(): String? {
+        return imgurl
+    }
+}

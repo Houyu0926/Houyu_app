@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.houyuapp">
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
+
         android:name=".injection.HouyuApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -18,7 +20,11 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".presentation.main.RegisterActivity">
+        <activity android:name=".presentation.register.RegisterActivity">
+
+        </activity>
+
+        <activity android:name=".presentation.list.DogListActivity">
 
         </activity>
     </application>

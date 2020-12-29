@@ -13,6 +13,10 @@ class UserRepository(
         databaseDao.insert(user.toData())
     }
 
+    fun deleteAccount(user: User){
+        databaseDao.delete(user.toData())
+    }
+
     fun getAccount(email: String, password: String): User?{
         val emailLocal = databaseDao.findByName(email, password)
         return emailLocal?.toEntity()

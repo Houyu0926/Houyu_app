@@ -10,13 +10,15 @@ import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import com.example.houyuapp.R
+import com.example.houyuapp.presentation.list.DogListActivity
+import com.example.houyuapp.presentation.register.RegisterActivity
 import kotlinx.android.synthetic.main.activity_main.*
 import org.koin.android.ext.android.inject
 
 class MainActivity : AppCompatActivity() {
 
     private var mExitTime: Long = 0
-    val mainViewModel : MainViewModel by inject()
+    private val mainViewModel : MainViewModel by inject()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -31,7 +33,9 @@ class MainActivity : AppCompatActivity() {
         mainViewModel.loginLiveData.observe(this, Observer {
             when (it) {
                 is LoginSuccess -> {
-                    Toast.makeText(this, "Login Success!", Toast.LENGTH_SHORT).show()
+                    Thread.sleep(500)
+                    val intent = Intent(this@MainActivity, DogListActivity::class.java)
+                    this@MainActivity.startActivity(intent)
                 }
                 LoginError -> {
                     AlertDialog.Builder(this)
