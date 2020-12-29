@@ -3,54 +3,63 @@
     {
       "breed": "Affenpinscher",
       "origin": "Germany",
-      "imgurl": "https://images.dog.ceo/breeds/affenpinscher/n02110627_12808.jpg"
+      "imgurl": "https://images.dog.ceo/breeds/affenpinscher/n02110627_12808.jpg",
+      "detailInfo": "The Affenpinscher, also known as the Monkey Terrier, is a terrier-like toy Pinscher breed of dog."
     },
     {
       "breed": "Africanis",
       "origin": "Southern Africa",
-      "imgurl": "https://images.dog.ceo/breeds/african/n02116738_4115.jpg"
-
+      "imgurl": "https://images.dog.ceo/breeds/african/n02116738_4115.jpg",
+      "detailInfo": "The Africanis is a landrace of dog endemic to Sub-Equatorial Africa"
     },
     {
       "breed": "Airedale",
       "origin": "United Kingdom",
-      "imgurl": "https://images.dog.ceo/breeds/airedale/n02096051_950.jpg"
+      "imgurl": "https://images.dog.ceo/breeds/airedale/n02096051_950.jpg",
+      "detailInfo": "The Airedale Terrier is a dog breed of the terrier type that originated in the valley (dale) of the River Aire, England."
 
     },
     {
       "breed": "Akita",
       "origin": "Japan",
-      "imgurl": "https://images.dog.ceo/breeds/akita/Akina_Inu_in_Riga_1.jpg"
+      "imgurl": "https://images.dog.ceo/breeds/akita/Akina_Inu_in_Riga_1.jpg",
+      "detailInfo": "The Akita is a large breed of dog originating from the mountainous regions of northern Japan."
     },
     {
       "breed": "Appenzeller",
       "origin": "Switzerland",
-      "imgurl": "https://images.dog.ceo/breeds/appenzeller/n02107908_6093.jpg"
+      "imgurl": "https://images.dog.ceo/breeds/appenzeller/n02107908_6093.jpg",
+      "detailInfo": "The Appenzeller Sennenhund is a medium-size breed of dog from the Swiss Alps."
     },
     {
       "breed": "Australian Shepherd",
       "origin": "USA",
-      "imgurl":"https://images.dog.ceo/breeds/australian-shepherd/leroy.jpg"
+      "imgurl":"https://images.dog.ceo/breeds/australian-shepherd/leroy.jpg",
+      "detailInfo":"The Australian Shepherd is a medium-sized breed of dog that was developed in the United States, and identified as a breed in the early 20th century."
     },
     {
       "breed": "Basenji",
       "origin": "Democratic Republic of the Congo",
-      "imgurl":"https://images.dog.ceo/breeds/basenji/n02110806_6080.jpg"
+      "imgurl":"https://images.dog.ceo/breeds/basenji/n02110806_6080.jpg",
+      "detailInfo":"The Basenji is a breed of hunting dog. It was bred from stock that originated in central Africa."
     },
     {
       "breed": "Beagle",
       "origin": "United Kingdom",
-      "imgurl":"https://images.dog.ceo/breeds/beagle/n02088364_2840.jpg"
+      "imgurl":"https://images.dog.ceo/breeds/beagle/n02088364_2840.jpg",
+      "detailInfo": "The beagle is a breed of small hound that is similar in appearance to the much larger foxhound."
     },
     {
       "breed": "Bluetick Coonhound",
       "origin": "USA",
-      "imgurl":"https://images.dog.ceo/breeds/bluetick/n02088632_4002.jpg"
+      "imgurl":"https://images.dog.ceo/breeds/bluetick/n02088632_4002.jpg",
+      "detailInfo":"The Bluetick Coonhound is known for its friendly persona, cold nose, and deep bawl mouth. It is most commonly used as a raccoon hunting dog, but may also be kept as a pet."
     },
     {
       "breed": "Borzoi",
       "origin": "Russia",
-      "imgurl":"https://images.dog.ceo/breeds/borzoi/n02090622_9374.jpg"
+      "imgurl":"https://images.dog.ceo/breeds/borzoi/n02090622_9374.jpg",
+      "detailInfo":"The Borzoi is a sighthound hunting breed of domestic dog. They are descended from the working dogs of people who migrated from Central Asian countries to Russia prior to the 17th century."
     },
     {
       "breed": "Bouvier des Flandres",
