@@ -7,6 +7,8 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout.OnRefreshListener
 import com.bumptech.glide.Glide
 import com.example.houyuapp.R
 import com.example.houyuapp.domain.entity.Dog
@@ -19,6 +21,7 @@ class ListAdapter(
 ) :
     RecyclerView.Adapter<ListAdapter.ViewHolder>() {
     private var imageView: ImageView? = null
+
 
     interface OnItemClickListener {
         fun onItemClick(item: Dog?)
@@ -83,7 +86,9 @@ class ListAdapter(
         }
         holder.txtHeader.setOnClickListener(object : View.OnClickListener {
             override fun onClick(v: View?) {
-                //remove(position)
+//                if (curDog != null) {
+//                    add(position, curDog)
+//                }
             }
         })
         if (curDog != null) {
@@ -91,6 +96,7 @@ class ListAdapter(
         }
 
     }
+
 
     // Return the size of your dataset (invoked by the layout manager)
     override fun getItemCount(): Int {
@@ -102,71 +108,6 @@ class ListAdapter(
 
     }
 
-
 }
 
-//class ListAdapter(
-//    private val values: MutableList<Dog?>?,
-//    private val context: Context,
-//    private var listener: OnItemClickListener
-//) :
-//    RecyclerView.Adapter<ListAdapter.ViewHolder>() {
-//    private var imageView: ImageView? = null
-//
-//    interface OnItemClickListener {
-//        fun onItemClick(item: Dog?)
-//    }
-//
-//    inner class ViewHolder(var layout: View) : RecyclerView.ViewHolder(
-//        layout
-//    ) {
-//        var txtHeader: TextView
-//        var txtFooter: TextView
-//
-//        init {
-//            txtHeader = layout.findViewById<View>(R.id.firstLine) as TextView
-//            txtFooter = layout.findViewById<View>(R.id.secondLine) as TextView
-//            imageView = layout.findViewById<View>(R.id.icon_dog) as ImageView
-//        }
-//    }
-//
-//    fun add(position: Int, item: Dog) {
-//        values.add(position, item)
-//        notifyItemInserted(position)
-//    }
-//
-//    private fun remove(position: Int) {
-//        values.removeAt(position)
-//        notifyItemRemoved(position)
-//    }
-//
-//    fun setListener(listener: OnItemClickListener) {
-//        this.listener = listener
-//    }
-//
-//    override fun onCreateViewHolder(
-//        parent: ViewGroup,
-//        viewType: Int
-//    ): ViewHolder {
-//        val inflater = LayoutInflater.from(parent.context)
-//        val v = inflater.inflate(R.layout.row_layout, parent, false)
-//        return ViewHolder(v)
-//    }
-//
-//    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-//        val curdog = values[position]
-//        holder.txtHeader.text = curdog.getBreed()
-//        holder.txtHeader.setOnClickListener { remove(position) }
-//        holder.txtFooter.text = curdog.getOrigin()
-//        Glide.with(context).load(curdog.getImageurl()).optionalFitCenter().into(imageView!!)
-//        holder.itemView.setOnClickListener { listener.onItemClick(curdog) }
-//    }
-//
-//    override fun getItemCount(): Int {
-//        if (values != null) {
-//            return values.size
-//        }else{
-//            return 0
-//        }
-//    }
-//}
+

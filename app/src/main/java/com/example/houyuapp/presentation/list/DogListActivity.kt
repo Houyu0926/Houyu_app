@@ -1,16 +1,20 @@
 package com.example.houyuapp.presentation.list
 
+import android.content.Context
+import android.content.SharedPreferences
 import android.os.Bundle
-import android.widget.AdapterView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.example.houyuapp.R
 import com.example.houyuapp.data.local.DogAPI
 import com.example.houyuapp.domain.entity.Dog
 import com.example.houyuapp.domain.entity.RestDogResponse
+import com.google.gson.Gson
 import com.google.gson.GsonBuilder
+import com.google.gson.reflect.TypeToken
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -24,13 +28,56 @@ class DogListActivity : AppCompatActivity() {
     private var recyclerView: RecyclerView? = null
     private var mAdapter: ListAdapter? = null
     private var layoutManager: RecyclerView.LayoutManager? = null
+    private var mySwipeRefreshLayout: SwipeRefreshLayout? = null
+    private var sharedPreferences: SharedPreferences? = null
+    private var gson: Gson? = null
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_list)
 
-        makeApiCall()
+        sharedPreferences = getSharedPreferences("houyu_application", Context.MODE_PRIVATE)
+        gson = GsonBuilder()
+            .setLenient()
+            .create()
+
+        refreshCall()
+
+        val dogList: MutableList<Dog?>? = getDataFromCache()
+        if (dogList != null){
+            showList(dogList)
+        }else{
+            makeApiCall()
+        }
+
+    }
+
+    private fun getDataFromCache(): MutableList<Dog?>? {
+        val jsonDog = sharedPreferences!!.getString("jsonDogList", null)
+        return if (jsonDog == null) {
+            null
+        } else {
+            val listType = object : TypeToken<List<Dog?>?>() {}.type
+            gson!!.fromJson(jsonDog, listType)
+        }
+    }
+
+    fun refreshCall(){
+        mySwipeRefreshLayout = findViewById(R.id.swiperefresh) as SwipeRefreshLayout
+
+        //Color set
+        mySwipeRefreshLayout!!.setColorSchemeResources(
+            android.R.color.holo_blue_light,
+            android.R.color.holo_red_light,
+            android.R.color.holo_orange_light
+        )
+        mySwipeRefreshLayout!!.setProgressBackgroundColorSchemeResource(android.R.color.white)
+
+        mySwipeRefreshLayout!!.setOnRefreshListener {
+
+            myUpdateOperation()
+        }
     }
 
     fun showList(dogList: MutableList<Dog?>?){
@@ -42,21 +89,25 @@ class DogListActivity : AppCompatActivity() {
         recyclerView!!.layoutManager = layoutManager
 
 
-
-        mAdapter = ListAdapter(dogList, applicationContext, object : ListAdapter.OnItemClickListener {
-            override fun onItemClick(item: Dog?) {
-                onItemClick(item)
-            }
-        })
+        mAdapter = ListAdapter(
+            dogList,
+            applicationContext,
+            object : ListAdapter.OnItemClickListener {
+                override fun onItemClick(item: Dog?) {
+                    onItemClick(item)
+                }
+            })
         recyclerView!!.adapter = mAdapter
     }
 
+    private fun myUpdateOperation() {
+        makeApiCall()
+        mySwipeRefreshLayout?.setRefreshing(false) // Disables the refresh icon
+        Toast.makeText(getApplicationContext(), "Refresh success !", Toast.LENGTH_SHORT).show()
 
+    }
 
     fun makeApiCall() {
-        val gson = GsonBuilder()
-            .setLenient()
-            .create()
 
         val retrofit = Retrofit.Builder()
             .baseUrl(BASE_URL)
@@ -74,6 +125,7 @@ class DogListActivity : AppCompatActivity() {
                 if (response.isSuccessful && response.body() != null) {
                     val dogList: MutableList<Dog?>? = response.body()!!.getInformation()
                     showList(dogList)
+                    saveList(dogList)
                 }
             }
 
@@ -81,6 +133,15 @@ class DogListActivity : AppCompatActivity() {
                 showError()
             }
         })
+    }
+    private fun saveList(dogList: MutableList<Dog?>?){
+        val jsonString: String = gson!!.toJson(dogList)
+
+        sharedPreferences
+            ?.edit()
+            ?.putString("dogList", jsonString)
+            ?.apply()
+        Toast.makeText(getApplicationContext(), "List saved !", Toast.LENGTH_SHORT).show()
     }
 
     private fun showError(){
