@@ -23,4 +23,4 @@ Design la page de Login et la page d'inscription
 
 ## Logo APP :
 
-<img src="https://github.com/Houyu0926/Project_Houyu/blob/master/images_app/logo.png" width="10%" height="10%">
+<img src="https://github.com/Houyu0926/Houyu_app/blob/master/App_images/paw.png" width="10%" height="10%">
