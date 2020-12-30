@@ -44,7 +44,7 @@ class RegisterActivity : AppCompatActivity(){
 
                     AlertDialog.Builder(this)
                         .setTitle("Error !")
-                        .setMessage("Email address already exists\nPlease register with another email address")
+                        .setMessage("Email address already exists.\nPlease register with another email address.")
                         .setNegativeButton("OK") { dialog, which ->
                             dialog.dismiss()
                         }

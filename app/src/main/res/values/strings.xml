@@ -1,8 +1,8 @@
 <resources>
     <string name="app_name">Dog knowledge</string>
-    <string name="connectez_vous">Please log in to your account</string>
+    <string name="connectez_vous">Please sign in</string>
     <string name="login">Login</string>
-    <string name="entrez_votre_login">Enter your login</string>
+    <string name="entrez_votre_login">Enter your email address</string>
     <string name="password">Password</string>
     <string name="entrez_votre_password">Enter your password</string>
     <string name="se_connecter">Log in</string>
