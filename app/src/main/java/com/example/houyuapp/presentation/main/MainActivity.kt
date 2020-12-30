@@ -39,8 +39,8 @@ class MainActivity : AppCompatActivity() {
                 }
                 LoginError -> {
                     AlertDialog.Builder(this)
-                        .setTitle("Erreur !")
-                        .setMessage("Adresse email ou password incorrect.\n\nAvez-vous déjà un compte ?")
+                        .setTitle("Error !")
+                        .setMessage("The email address or password is wrong.")
                         .setPositiveButton("OK") { dialog, which ->
                             dialog.dismiss()
                         }

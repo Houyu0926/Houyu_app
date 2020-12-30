@@ -7,8 +7,6 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
-import androidx.swiperefreshlayout.widget.SwipeRefreshLayout.OnRefreshListener
 import com.bumptech.glide.Glide
 import com.example.houyuapp.R
 import com.example.houyuapp.domain.entity.Dog
@@ -18,10 +16,11 @@ class ListAdapter(
     private val values: MutableList<Dog?>?,
     private val context: Context,
     private var listener: OnItemClickListener? = null
+
+
 ) :
     RecyclerView.Adapter<ListAdapter.ViewHolder>() {
     private var imageView: ImageView? = null
-
 
     interface OnItemClickListener {
         fun onItemClick(item: Dog?)
@@ -84,16 +83,17 @@ class ListAdapter(
                 it
             ) }
         }
-        holder.txtHeader.setOnClickListener(object : View.OnClickListener {
-            override fun onClick(v: View?) {
-//                if (curDog != null) {
-//                    add(position, curDog)
-//                }
-            }
-        })
+
         if (curDog != null) {
             holder.txtFooter.text = curDog.getOrigin()
         }
+
+        holder.itemView.setOnClickListener(object : View.OnClickListener {
+            override fun onClick(v: View?) {
+                listener!!.onItemClick(curDog)
+
+            }
+        })
 
     }
 

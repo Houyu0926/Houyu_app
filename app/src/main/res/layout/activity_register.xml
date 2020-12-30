@@ -14,6 +14,7 @@
             android:layout_height="wrap_content"
             android:text="@string/bienvenue_sur_la_page_d_inscription"
             android:layout_marginTop="30dp"
+            android:textStyle="bold"
             android:textAlignment="center"
             android:textSize="30sp" />
 
@@ -21,8 +22,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/login_register"
+            android:textStyle="bold|italic"
             android:textAlignment="center"
-            android:layout_marginTop="90dp"
+            android:layout_marginTop="70dp"
             android:textSize="20sp" />
 
         <EditText
@@ -38,6 +40,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/new_password"
+            android:textStyle="bold|italic"
             android:textAlignment="center"
             android:layout_marginTop="30dp"
             android:textSize="20sp" />
@@ -57,12 +60,16 @@
 
             <Button
                 android:id="@+id/valider_button"
+                android:layout_width="426dp"
                 android:layout_height="60dp"
-                android:layout_width="wrap_content"
-                android:layout_marginTop="30dp"
-                android:text="@string/valider"
                 android:layout_gravity="center"
+                android:layout_marginTop="40dp"
+                android:text="@string/valider"
                 android:textAlignment="center"
+                android:textAllCaps="false"
+                android:background="#8BC34A"
+                android:backgroundTint="#8BC34A"
+                android:textColor="#FFFFFF"
                 android:textSize="18sp" />
 
 

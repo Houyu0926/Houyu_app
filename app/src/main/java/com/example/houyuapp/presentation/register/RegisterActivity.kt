@@ -35,7 +35,7 @@ class RegisterActivity : AppCompatActivity(){
         registerViewModel.registerLiveData.observe(this, Observer {
             when (it) {
                 is RegisterSuccess -> {
-                    Toast.makeText(this, "Inscription success!", Toast.LENGTH_LONG).show()
+                    //Toast.makeText(this, "Inscription success!", Toast.LENGTH_LONG).show()
                     Thread.sleep(500)
                     val intent = Intent(this@RegisterActivity, DogListActivity::class.java)
                     this@RegisterActivity.startActivity(intent)
@@ -43,8 +43,8 @@ class RegisterActivity : AppCompatActivity(){
                 is RegisterError -> {
 
                     AlertDialog.Builder(this)
-                        .setTitle("Erreur !")
-                        .setMessage("Adresse mail existe déjà\nVeuillez vous inscrire avec une autre adresse mail")
+                        .setTitle("Error !")
+                        .setMessage("Email address already exists\nPlease register with another email address")
                         .setNegativeButton("OK") { dialog, which ->
                             dialog.dismiss()
                         }
@@ -57,7 +57,11 @@ class RegisterActivity : AppCompatActivity(){
             val newUserEmail = new_username.text.toString().trim()
             val newUserPassword = new_password.text.toString().trim()
             val newUser = User(newUserEmail, newUserPassword)
-            registerViewModel.onClickedRegister(newUser)
+
+            if (newUserEmail != "" || newUserPassword != ""){
+                registerViewModel.onClickedRegister(newUser)
+            }
+
             findViewById<EditText>(R.id.new_username).text = null
             findViewById<EditText>(R.id.new_password).text = null
 

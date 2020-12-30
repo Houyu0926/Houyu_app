@@ -4,6 +4,7 @@ import android.content.Context
 import android.content.SharedPreferences
 import android.os.Bundle
 import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -31,6 +32,7 @@ class DogListActivity : AppCompatActivity() {
     private var mySwipeRefreshLayout: SwipeRefreshLayout? = null
     private var sharedPreferences: SharedPreferences? = null
     private var gson: Gson? = null
+    private var detailsInfo: String? = null
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -94,7 +96,7 @@ class DogListActivity : AppCompatActivity() {
             applicationContext,
             object : ListAdapter.OnItemClickListener {
                 override fun onItemClick(item: Dog?) {
-                    onItemClick(item)
+                     navigateToDetails(item)
                 }
             })
         recyclerView!!.adapter = mAdapter
@@ -103,7 +105,7 @@ class DogListActivity : AppCompatActivity() {
     private fun myUpdateOperation() {
         makeApiCall()
         mySwipeRefreshLayout?.setRefreshing(false) // Disables the refresh icon
-        Toast.makeText(getApplicationContext(), "Refresh success !", Toast.LENGTH_SHORT).show()
+        //Toast.makeText(getApplicationContext(), "Refresh success !", Toast.LENGTH_SHORT).show()
 
     }
 
@@ -128,7 +130,6 @@ class DogListActivity : AppCompatActivity() {
                     saveList(dogList)
                 }
             }
-
             override fun onFailure(call: Call<RestDogResponse?>?, t: Throwable?) {
                 showError()
             }
@@ -141,11 +142,27 @@ class DogListActivity : AppCompatActivity() {
             ?.edit()
             ?.putString("dogList", jsonString)
             ?.apply()
-        Toast.makeText(getApplicationContext(), "List saved !", Toast.LENGTH_SHORT).show()
+        //Toast.makeText(getApplicationContext(), "List saved !", Toast.LENGTH_SHORT).show()
     }
 
     private fun showError(){
-        Toast.makeText(getApplicationContext(), "API error !", Toast.LENGTH_SHORT).show()
+        AlertDialog.Builder(this)
+            .setTitle("API Error !")
+            .setMessage("Loading failed, please check network connection.")
+            .setPositiveButton("OK") { dialog, which ->
+                dialog.dismiss()
+            }
+            .show()
+    }
+
+    fun navigateToDetails(dog: Dog?) {
+        AlertDialog.Builder(this)
+            .setTitle(dog?.getBreed().toString())
+            .setMessage(dog?.getdetailInfo().toString())
+            .setPositiveButton("OK") { dialog, which ->
+                dialog.dismiss()
+            }
+            .show()
     }
 
 }

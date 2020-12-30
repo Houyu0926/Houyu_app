@@ -27,6 +27,7 @@
         <activity android:name=".presentation.list.DogListActivity">
 
         </activity>
+
     </application>
 
 </manifest>
