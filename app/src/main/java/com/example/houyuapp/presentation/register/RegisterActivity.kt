@@ -36,7 +36,7 @@ class RegisterActivity : AppCompatActivity(){
             when (it) {
                 is RegisterSuccess -> {
                     //Toast.makeText(this, "Inscription success!", Toast.LENGTH_LONG).show()
-                    Thread.sleep(500)
+                    Thread.sleep(2000)
                     val intent = Intent(this@RegisterActivity, DogListActivity::class.java)
                     this@RegisterActivity.startActivity(intent)
                 }
@@ -59,10 +59,20 @@ class RegisterActivity : AppCompatActivity(){
             val newUser = User(newUserEmail, newUserPassword)
 
             if (newUserEmail != "" || newUserPassword != ""){
-                registerViewModel.onClickedRegister(newUser)
-            }
+                if (newUserPassword.length > 5){
+                    registerViewModel.onClickedRegister(newUser)
+                    findViewById<EditText>(R.id.new_username).text = null
+                }else{
+                    AlertDialog.Builder(this)
+                        .setTitle("Error !")
+                        .setMessage("Password at least 6 characters.")
+                        .setNegativeButton("OK") { dialog, which ->
+                            dialog.dismiss()
+                        }
+                        .show()
+                }
 
-            findViewById<EditText>(R.id.new_username).text = null
+            }
             findViewById<EditText>(R.id.new_password).text = null
 
         }

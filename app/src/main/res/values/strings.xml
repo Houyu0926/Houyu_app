@@ -9,7 +9,7 @@
     <string name="s_inscrire">Register</string>
     <string name="bienvenue_sur_la_page_d_inscription">Welcome to the registration page</string>
     <string name="login_register">New login</string>
-    <string name="entrez_votre_password_page">Enter your new password</string>
+    <string name="entrez_votre_password_page">Enter your new password (6 characters min)</string>
     <string name="new_password">New password</string>
     <string name="valider">Submit</string>
 </resources>
