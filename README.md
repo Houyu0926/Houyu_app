@@ -45,3 +45,10 @@ Ceci est la page d'inscription :
 - Si l'adresse mail existe déjà, il vous demandera de ressaisir le nouveau adresse et le nouveau mot de passe.
 <img src="https://github.com/Houyu0926/Houyu_app/blob/master/App_images/Registration_failed.jpg" width="25%" height="25%">
 
+## Page liste : 
+
+- Affichage d'une liste de chien : 
+<img src="https://github.com/Houyu0926/Houyu_app/blob/master/App_images/List.jpg" width="25%" height="25%">
+
+- Si je coupe le réseau et fait refresh de liste, il s'affichera Api erreur mais les données de listes existe quand même.
+<img src="https://github.com/Houyu0926/Houyu_app/blob/master/App_images/List_refresh_failed.jpg" width="25%" height="25%">
