@@ -1,9 +1,9 @@
 package com.example.houyuapp.presentation.list
 
 import android.content.Context
+import android.content.DialogInterface
 import android.content.SharedPreferences
 import android.os.Bundle
-import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -96,7 +96,7 @@ class DogListActivity : AppCompatActivity() {
             applicationContext,
             object : ListAdapter.OnItemClickListener {
                 override fun onItemClick(item: Dog?) {
-                     navigateToDetails(item)
+                    navigateToDetails(item)
                 }
             })
         recyclerView!!.adapter = mAdapter
@@ -130,6 +130,7 @@ class DogListActivity : AppCompatActivity() {
                     saveList(dogList)
                 }
             }
+
             override fun onFailure(call: Call<RestDogResponse?>?, t: Throwable?) {
                 showError()
             }
@@ -163,6 +164,17 @@ class DogListActivity : AppCompatActivity() {
                 dialog.dismiss()
             }
             .show()
+    }
+
+    override fun onBackPressed() {
+        AlertDialog.Builder(this)
+            .setIcon(R.drawable.paw)
+            .setTitle("Confirmation")
+            .setMessage("Do you want to log out ?")
+            .setNegativeButton("Cancel", null)
+            .setPositiveButton("Confirm",
+                DialogInterface.OnClickListener { dialog, which -> finish() }).show()
+
     }
 
 }
